@@ -15,8 +15,7 @@
 # [START gae_python38_app]
 from flask import Flask
 import stocker
-import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+import tensorflow as tf
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -30,6 +29,15 @@ def hello():
 
 
 if __name__ == '__main__':
+    try:
+        # Disable all GPUS
+        tf.config.set_visible_devices([], 'GPU')
+        visible_devices = tf.config.get_visible_devices()
+        for device in visible_devices:
+            assert device.device_type != 'GPU'
+    except:
+        # Invalid device or cannot modify virtual devices once initialized.
+        pass
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
