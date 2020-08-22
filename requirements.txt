@@ -1,2 +1,4 @@
 stocker
 Flask==1.1.2
+numpy==1.14.0
+scipy==1.5.0
