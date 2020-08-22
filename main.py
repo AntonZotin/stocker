@@ -24,10 +24,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    result = []
-    for i in range(5):
-        result.append(stocker.predict.tomorrow('AAPL')[0])
-    return f'Values = {min(result)}...{sum(result) / len(result)}...{max(result)}'
+    return str(stocker.predict.tomorrow('AAPL'))
+    # result = []
+    # for i in range(5):
+    #     result.append(stocker.predict.tomorrow('AAPL')[0])
+    # return f'Values = {min(result)}...{sum(result) / len(result)}...{max(result)}'
 
 
 if __name__ == '__main__':
