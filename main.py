@@ -23,8 +23,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    res = str(stocker.predict.tomorrow('AAPL'))
-    return res
+    return 'Hello'
+    # res = str(stocker.predict.tomorrow('AAPL'))
+    # return res
 
 
 if __name__ == '__main__':
