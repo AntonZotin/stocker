@@ -14,7 +14,7 @@
 
 # [START gae_python38_app]
 from flask import Flask
-# import stocker
+import stocker
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -23,9 +23,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello'
-    # res = str(stocker.predict.tomorrow('AAPL'))
-    # return res
+    res = str(stocker.predict.tomorrow('AAPL'))
+    return res
 
 
 if __name__ == '__main__':
