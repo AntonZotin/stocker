@@ -33,6 +33,8 @@ def index():
     # return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
     #                        claims=CLAIMS)
     try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", '--upgrade', 'pip'])
+        subprocess.check_call([sys.executable, "-m", "pip", "install", 'tensorflow==2.2.0'])
         subprocess.check_call([sys.executable, "-m", "pip", "install", 'stocker'])
         import stocker
         return 'hi'
