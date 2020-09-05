@@ -14,6 +14,8 @@
 
 # [START app]
 import logging
+import subprocess
+import sys
 
 from flask import Flask, render_template
 
@@ -31,6 +33,7 @@ def index():
     # return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
     #                        claims=CLAIMS)
     try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", 'stocker'])
         import stocker
         return 'hi'
         s = stocker.predict.tomorrow('AAPL')
