@@ -31,8 +31,8 @@ def index():
     # return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
     #                        claims=CLAIMS)
     try:
-        return 'hi'
         import stocker
+        return 'hi'
         s = stocker.predict.tomorrow('AAPL')
         res = f'Result for {s[2]} {s[0]}'
         return res
