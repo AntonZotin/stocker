@@ -23,12 +23,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    result = []
-    for i in range(10):
-        s = stocker.predict.tomorrow('AAPL')
-        result.append(s[0])
-        print(i)
-    res = f'Result for {s[2]} {min(result)}...{round(sum(result) / float(len(result)), 2)} {max(result)}'
+    s = stocker.predict.tomorrow('AAPL')
+    res = f'Result for {s[2]} {s[0]}'
     return res
 
 
