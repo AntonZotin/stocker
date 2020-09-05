@@ -27,10 +27,13 @@ CLAIMS = []
 
 @app.route('/')
 def hello():
-    import stocker
-    s = stocker.predict.tomorrow('AAPL')
-    res = f'Result for {s[2]} {s[0]}'
-    return res
+    try:
+        import stocker
+        s = stocker.predict.tomorrow('AAPL')
+        res = f'Result for {s[2]} {s[0]}'
+        return res
+    except Exception as e:
+        return str(e)
 # # [START index]
 # @app.route('/', methods=['GET'])
 # def index():
