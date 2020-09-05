@@ -28,7 +28,7 @@ def hello():
         s = stocker.predict.tomorrow('AAPL')
         result.append(s[0])
         print(i)
-    res = f'Result for {s[2]} {min(result)}...{sum(result) / float(len(result))} {max(result)}'
+    res = f'Result for {s[2]} {min(result)}...{round(sum(result) / float(len(result)), 2)} {max(result)}'
     return res
 
 
