@@ -14,6 +14,7 @@
 
 # [START app]
 import logging
+import stocker
 
 from flask import Flask, render_template
 
@@ -24,13 +25,17 @@ MESSAGES = []
 TOKENS = []
 CLAIMS = []
 
-
-# [START index]
-@app.route('/', methods=['GET'])
-def index():
-    return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
-                           claims=CLAIMS)
-# [END index]
+@app.route('/')
+def hello():
+    s = stocker.predict.tomorrow('AAPL')
+    res = f'Result for {s[2]} {s[0]}'
+    return res
+# # [START index]
+# @app.route('/', methods=['GET'])
+# def index():
+#     return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
+#                            claims=CLAIMS)
+# # [END index]
 
 
 @app.errorhandler(500)
