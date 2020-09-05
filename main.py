@@ -25,9 +25,9 @@ TOKENS = []
 CLAIMS = []
 
 
-@app.route('/')
-def hello():
-    return 'hello'
+# @app.route('/')
+# def hello():
+#     return 'hello'
     # try:
     #     import stocker
     #     s = stocker.predict.tomorrow('AAPL')
@@ -36,11 +36,11 @@ def hello():
     # except Exception as e:
     #     return str(e)
 # # [START index]
-# @app.route('/', methods=['GET'])
-# def index():
-#     return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
-#                            claims=CLAIMS)
-# # [END index]
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
+                           claims=CLAIMS)
+# [END index]
 
 
 @app.errorhandler(500)
