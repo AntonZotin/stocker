@@ -14,7 +14,6 @@
 
 # [START app]
 import logging
-import stocker
 
 from flask import Flask, render_template
 
@@ -28,6 +27,7 @@ CLAIMS = []
 
 @app.route('/')
 def hello():
+    import stocker
     s = stocker.predict.tomorrow('AAPL')
     res = f'Result for {s[2]} {s[0]}'
     return res
