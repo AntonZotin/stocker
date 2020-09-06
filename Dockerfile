@@ -8,7 +8,7 @@
 # FROM python:3-slim
 #
 # python:3-alpine builds a 97 MB image - 33.2 MB in Google Container Registry
-FROM python:3-alpine
+FROM python:3.7
 
 # RUN apt-get update -y
 # RUN apt-get install -y python-pip
@@ -18,6 +18,7 @@ COPY . /app
 # Create and change to the app directory.
 WORKDIR /app
 
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN chmod 444 app.py
