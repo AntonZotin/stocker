@@ -21,6 +21,7 @@ RUN wget -qO- https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz 
         --disable-installation-options
     # install crcmod: https://cloud.google.com/storage/docs/gsutil/addlhelp/CRC32CandInstallingcrcmod
 RUN apt-get purge -y python2.7-minimal
+RUN apt-get -y remove 'python3.*'
 RUN apt-get -y update
 RUN apt-get -y install build-essential libpq-dev libssl-dev openssl libffi-dev zlib1g-dev
 RUN apt-get -y install python3-pip python3.7-dev
