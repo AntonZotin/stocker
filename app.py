@@ -4,8 +4,6 @@ import time
 
 from flask import Flask, render_template
 
-import stocker
-
 app = Flask(__name__)
 
 data = {}
@@ -13,6 +11,7 @@ data = {}
 
 @app.route('/')
 def home():
+    import stocker
     return str(stocker.predict.tomorrow('AAPL'))
     res = []
     for date, values in data.items():
