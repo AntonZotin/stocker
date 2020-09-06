@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 ADD requirements.txt /app
 RUN pip install --upgrade pip && pip install -r requirements.txt
-ADD app.py /app
+ADD . /app
 ENV PORT 8080
 
 # Run the web service on container startup.
