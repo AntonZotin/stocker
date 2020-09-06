@@ -43,4 +43,4 @@ tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
   - gcloud-slim
-timeout: 3600
+timeout: 3600s
