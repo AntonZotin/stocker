@@ -31,19 +31,19 @@ CLAIMS = []
 # [START index]
 @app.route('/', methods=['GET'])
 def index():
-    # return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
-    #                        claims=CLAIMS)
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", '--upgrade', 'pip'])
-        subprocess.check_call([sys.executable, "-m", "pip", "install", 'tensorflow==2.2.0'])
-        subprocess.check_call([sys.executable, "-m", "pip", "install", 'stocker'])
-        import stocker
-        return 'hi'
-        s = stocker.predict.tomorrow('AAPL')
-        res = f'Result for {s[2]} {s[0]}'
-        return res
-    except Exception as e:
-        return str(''.join(traceback.format_exception(None, e, e.__traceback__)))
+    return render_template('index.html', messages=MESSAGES, tokens=TOKENS,
+                           claims=CLAIMS)
+    # try:
+    #     subprocess.check_call([sys.executable, "-m", "pip", "install", '--upgrade', 'pip'])
+    #     subprocess.check_call([sys.executable, "-m", "pip", "install", 'tensorflow==2.2.0'])
+    #     subprocess.check_call([sys.executable, "-m", "pip", "install", 'stocker'])
+    #     import stocker
+    #     return 'hi'
+    #     s = stocker.predict.tomorrow('AAPL')
+    #     res = f'Result for {s[2]} {s[0]}'
+    #     return res
+    # except Exception as e:
+    #     return str(''.join(traceback.format_exception(None, e, e.__traceback__)))
 # [END index]
 
 
