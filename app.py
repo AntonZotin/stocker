@@ -10,12 +10,13 @@ data = {}
 @app.route('/')
 def home():
     import stocker
-    s = stocker.predict.tomorrow('AAPL')
-    if s[2] in data:
-        data[s[2]]['values'].append(float(s[0]))
-        data[s[2]]['errors'].append(float(s[1]))
-    else:
-        data[s[2]] = {'values': [s[0]], 'errors': [s[1]]}
+    for i in range(10):
+        s = stocker.predict.tomorrow('AAPL')
+        if s[2] in data:
+            data[s[2]]['values'].append(float(s[0]))
+            data[s[2]]['errors'].append(float(s[1]))
+        else:
+            data[s[2]] = {'values': [s[0]], 'errors': [s[1]]}
     res = []
     for date, values in data.items():
         res.append({
