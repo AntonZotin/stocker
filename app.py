@@ -10,7 +10,7 @@ data = {}
 @app.route('/')
 def home():
     import stocker
-    for i in range(10):
+    for i in range(5):
         s = stocker.predict.tomorrow('AAPL')
         if s[2] in data:
             data[s[2]]['values'].append(float(s[0]))
