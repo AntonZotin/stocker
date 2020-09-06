@@ -13,6 +13,7 @@ data = {}
 
 @app.route('/')
 def home():
+    return str(stocker.predict.tomorrow('AAPL'))
     res = []
     for date, values in data.items():
         res.append({
@@ -35,5 +36,5 @@ def get_data():
 
 
 if __name__ == '__main__':
-    _thread.start_new_thread(get_data, ())
+    # _thread.start_new_thread(get_data, ())
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
