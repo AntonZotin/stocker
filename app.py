@@ -2,7 +2,6 @@ import os
 import logging
 
 from flask import Flask
-import stocker
 
 # Change the format of messages logged to Stackdriver
 logging.basicConfig(format='%(message)s', level=logging.INFO)
@@ -12,6 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+	import stocker
 	s = stocker.predict.tomorrow('AAPL')
 	res = f'Result for {s[2]} {s[0]}'
 	return res
