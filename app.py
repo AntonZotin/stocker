@@ -1,6 +1,4 @@
-import _thread
 import os
-import time
 
 from flask import Flask, render_template
 
@@ -12,7 +10,12 @@ data = {}
 @app.route('/')
 def home():
     import stocker
-    return str(stocker.predict.tomorrow('AAPL'))
+    s = stocker.predict.tomorrow('AAPL')
+    if s[2] in data:
+        data[s[2]]['values'].append(float(s[0]))
+        data[s[2]]['errors'].append(float(s[1]))
+    else:
+        data[s[2]] = {'values': [s[0]], 'errors': [s[1]]}
     res = []
     for date, values in data.items():
         res.append({
@@ -24,16 +27,5 @@ def home():
     return render_template('index.html', data=res)
 
 
-def get_data():
-    s = stocker.predict.tomorrow('AAPL')
-    if s[2] in data:
-        data[s[2]]['values'].append(s[0])
-        data[s[2]]['errors'].append(s[1])
-    else:
-        data[s[2]] = {'values': [s[0]], 'errors': [s[1]]}
-    time.sleep(3600)
-
-
 if __name__ == '__main__':
-    # _thread.start_new_thread(get_data, ())
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
