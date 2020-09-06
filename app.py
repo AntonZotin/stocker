@@ -12,12 +12,13 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 	try:
-		return 'hi'
 		import stocker
+		return 'hi'
 		s = stocker.predict.tomorrow('AAPL')
 		res = f'Result for {s[2]} {s[0]}'
 		return res
 	except Exception as e:
+		logging.error(e)
 		return str(e)
 
 
