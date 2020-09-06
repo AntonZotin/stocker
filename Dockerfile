@@ -25,6 +25,10 @@ RUN apt-get -y install python3.7-dev libpython3.7 python3-pip
 RUN apt-get -y install python3.7
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
 RUN update-alternatives --config python3
+
+COPY . /app
+WORKDIR /app
+
 RUN python3 -m pip install --upgrade pip && \
     pip3 install -U crcmod && pip3 install Flask==1.1.2 tensorflow==2.2.0 stocker
 
@@ -33,9 +37,5 @@ RUN apt-get -y remove gcc python-dev python-setuptools wget && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf ~/.config/gcloud
 
-COPY notice.sh /builder
-
-ENV PATH=/builder/google-cloud-sdk/bin/:$PATH
 RUN git config --system credential.helper gcloud.sh
-
-ENTRYPOINT ["/builder/notice.sh"]
+CMD ['main.py']
