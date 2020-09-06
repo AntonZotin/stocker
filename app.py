@@ -13,7 +13,6 @@ app = Flask(__name__)
 def home():
 	try:
 		import stocker
-		return 'hi'
 		s = stocker.predict.tomorrow('AAPL')
 		res = f'Result for {s[2]} {s[0]}'
 		return res
