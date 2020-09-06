@@ -12,6 +12,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 	try:
+		return 'hi'
 		import stocker
 		s = stocker.predict.tomorrow('AAPL')
 		res = f'Result for {s[2]} {s[0]}'
