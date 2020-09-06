@@ -1,7 +1,7 @@
 FROM launcher.gcr.io/google/ubuntu16_04
 
 RUN apt-get -y update
-RUN apt-get -y install gcc wget ca-certificates
+RUN apt-get -y install gcc wget ca-certificates software-properties-common
 
     # Install Python 3.7
 RUN add-apt-repository ppa:deadsnakes/ppa && \
