@@ -12,7 +12,7 @@ def home():
     import stocker
     for i in range(5):
         s = stocker.predict.tomorrow('AAPL')
-        if s[2] in data:
+        if s[2] in data and len(data[s[2]]['values']) != 5:
             data[s[2]]['values'].append(float(s[0]))
             data[s[2]]['errors'].append(float(s[1]))
         else:
