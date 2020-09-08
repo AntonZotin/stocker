@@ -12,16 +12,16 @@ def home(currency):
     import stocker
     for i in range(5):
         s = stocker.predict.tomorrow(currency.upper())
-        if s[2] in data and len(data[s[2]]['values']) != 5:
-            data[s[2]]['values'].append(float(s[0]))
-            data[s[2]]['errors'].append(float(s[1]))
+        label = f'{s[2]}/{currency.upper()}'
+        if label in data and len(data[s[2]]['values']) != 5:
+            data[label]['values'].append(float(s[0]))
+            data[label]['errors'].append(float(s[1]))
         else:
-            data[s[2]] = {'values': [s[0]], 'errors': [s[1]], 'label': currency.upper()}
+            data[label] = {'values': [s[0]], 'errors': [s[1]]}
     res = []
-    for date, values in data.items():
+    for index, values in data.items():
         res.append({
-            'label': values["label"],
-            'date': date,
+            'label': index,
             'min': f'{min(values["values"])} ({min(values["errors"])})',
             'avg': f'{round(sum(values["values"]) / len(values["values"]), 2)} ({round(sum(values["errors"]) / len(values["errors"]), 2)})',
             'max': f'{max(values["values"])} ({max(values["errors"])})'

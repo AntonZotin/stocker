@@ -26,8 +26,7 @@
 <div class="dd">
     <table class="tt" border="1" cellpadding="10" cellspacing="5">
         <tr>
-            <th style="width: 150px">Label</th>
-            <th style="width: 150px">Date</th>
+            <th style="width: 150px">Label+Date</th>
             <th style="width: 150px">Min (error)</th>
             <th style="width: 150px">Avg (error)</th>
             <th style="width: 150px">Max (error)</th>
@@ -35,7 +34,6 @@
         {% for d in data: %}
             <tr>
                 <td style="width: 150px">{{d.label}}</td>
-                <td style="width: 150px">{{d.date}}</td>
                 <td style="width: 150px">{{d.min}}</td>
                 <td style="width: 150px">{{d.avg}}</td>
                 <td style="width: 150px">{{d.max}}</td>
