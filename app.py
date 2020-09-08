@@ -7,19 +7,20 @@ app = Flask(__name__)
 data = {}
 
 
-@app.route('/')
-def home():
+@app.route('/<currency>')
+def home(currency):
     import stocker
     for i in range(5):
-        s = stocker.predict.tomorrow('AAPL')
+        s = stocker.predict.tomorrow(currency.upper())
         if s[2] in data and len(data[s[2]]['values']) != 5:
             data[s[2]]['values'].append(float(s[0]))
             data[s[2]]['errors'].append(float(s[1]))
         else:
-            data[s[2]] = {'values': [s[0]], 'errors': [s[1]]}
+            data[s[2]] = {'values': [s[0]], 'errors': [s[1]], 'label': currency.upper()}
     res = []
     for date, values in data.items():
         res.append({
+            'label': values["label"],
             'date': date,
             'min': f'{min(values["values"])} ({min(values["errors"])})',
             'avg': f'{round(sum(values["values"]) / len(values["values"]), 2)} ({round(sum(values["errors"]) / len(values["errors"]), 2)})',
