@@ -13,7 +13,7 @@ def home(currency):
     for i in range(5):
         s = stocker.predict.tomorrow(currency.upper())
         label = f'{s[2]}/{currency.upper()}'
-        if label in data and len(data[s[2]]['values']) != 5:
+        if label in data and len(data[label]['values']) != 5:
             data[label]['values'].append(float(s[0]))
             data[label]['errors'].append(float(s[1]))
         else:
